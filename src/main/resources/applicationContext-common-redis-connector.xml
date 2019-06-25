@@ -5,6 +5,15 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- 加载配置文件 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location">
+            <value>META-INF/redis.properties</value>
+        </property>
+        <property name="fileEncoding" value="utf-8"/>
+    </bean>
+
     <!-- redis连接池 jedis-->
     <bean id="jedisConnFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
         <property name="hostName" value="${redis.host}"></property>
